@@ -51,5 +51,8 @@ module.export.getAmbits = function(req, res, next) {
   findAllAmbits()
     .then(function(ambits){
       res.send(ambits);
+    })
+    .fail(function (error) {
+      next(error);
     });
 };
