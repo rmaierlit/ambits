@@ -17,7 +17,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.15.3",
+=======
     "body-parser": "^1.15.2",
     "crypto": "0.0.3",
     "ejs": "^2.5.5",
