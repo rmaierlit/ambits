@@ -38,8 +38,9 @@ module.exports.saveCheckIn = function(req, res, next) {
     .then(function(ambit) {
       var now = new Date;
       var today = now.toDateString();
-      if (today !== ambit.checkIns[ambit.checkIns.length -1]){
-        ambit.checkIns.push( today );
+      var lastCheck = ambit.checkIns[ambit.checkIns.length -1].toDateString();
+      if (today !== lastCheck){
+        ambit.checkIns.push( now );
         return ambit.save();
       } else {
         res.json('already checked in');
