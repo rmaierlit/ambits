@@ -30,8 +30,7 @@ var validateLocation = function (current, checkin) {
 //public functions:
 export const postCheckin = function (ambitId, callback) {
   $.ajax({
-    url:'__urlgoeshere__', //TODO: define the interface
-    data: {refId: ambitId},
+    url:'/ambits/' + ambitId,
     type: 'POST',
     contentType: 'application/json',
     sucess: function(data) {
@@ -42,7 +41,7 @@ export const postCheckin = function (ambitId, callback) {
 
 export const getAllAmbits = function(callback) {
     $.ajax({
-    url:'__urlgoeshere__', //TODO: define the interface.
+    url:'/ambits',
     data: {refId: ambitId},
     type: 'GET',
     contentType: 'application/json',

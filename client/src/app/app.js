@@ -5,7 +5,8 @@ import {Router, Route, Link, browserHistory} from 'react-router';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './Main'; // Our custom react components
-import CheckIn from './checkin/components/checkinContainer.jsx'
+import CheckIn from './checkin/components/checkinContainer.jsx';
+import Create from './createAmbit/createAmbit.jsx';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -24,16 +25,16 @@ class Home extends React.Component {
   }
 }
 
-class Create extends React.Component {
-  render(){
-    return (
-      <div>
-        <h1>This page will create the Ambits</h1>
-        <Link to="/">Home</Link>
-      </div>
-    );
-  }
-}
+// class Create extends React.Component {
+//   render(){
+//     return (
+//       <div>
+//         <h1>This page will create the Ambits</h1>
+//         <Link to="/">Home</Link>
+//       </div>
+//     );
+//   }
+// }
 
 // class CheckIn extends React.Component {
 //   render(){
