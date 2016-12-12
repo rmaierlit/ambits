@@ -37,13 +37,13 @@ module.exports.saveCheckIn = function(req, res, next) {
   findAmbit({refId: refId})
     .then(function(ambit) {
       var now = new Date;
-      var today = now.toDateString
+      var today = now.toDateString();
       if (today !== ambit.checkIns[ambit.checkIns.length -1]){
-        ambit.checkIns.push( now.toDateString() );
+        ambit.checkIns.push( today );
         return ambit.save();
-      } else(
+      } else {
         res.json('already checked in');
-      )
+      }
     })
     .then(function(savedAmbit) {
       res.send(savedAmbit);
