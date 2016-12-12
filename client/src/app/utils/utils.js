@@ -1,5 +1,3 @@
-
-
 //private helper functions:
 var validateLocation = function (current, checkin) {
   const MIN_DIST = 200; // acceptable distance between ambit loc and checkin loc
@@ -32,12 +30,22 @@ export const postCheckin = function (ambitId, callback) {
   $.ajax({
     url:'/ambits/' + ambitId,
     type: 'POST',
-    contentType: 'application/json',
-    sucess: function(data) {
+    success: function(data) {
       callback(data);
     }
   });
 };
+
+export const postAmbit = function (ambit, callback){
+  $.ajax({
+    url:'/ambits',
+    type: 'POST',
+    contentType: 'application/json',
+    success: function(data) {
+      callback(data);
+    }
+  })
+}
 
 export const getAllAmbits = function(callback) {
     $.ajax({
@@ -45,7 +53,7 @@ export const getAllAmbits = function(callback) {
     data: {refId: ambitId},
     type: 'GET',
     contentType: 'application/json',
-    sucess: function(data) {
+    success: function(data) {
       callback(data);
     }
   });

@@ -5,15 +5,15 @@ export default class CheckinContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {name: 'Family Court'};
-    this.handleCreateAmbit.bind(this);
-    this.handleChange.bind(this);
+    this.handleCreateAmbit = this.handleCreateAmbit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleCreateAmbit(event){
+  handleCreateAmbit(){
     var ambit = {
-      refId = this.state.name.length,
+      refId : this.state.name.length,
       name: this.state.name,
-      coords: {longitude: 2525, latitude: 2525}
+      coords: {longitude: 2525, latitude: 2525},
       weekdays: {
         mon: true,
         tue: false,
@@ -23,9 +23,10 @@ export default class CheckinContainer extends React.Component {
         sat: false,
         sun: false
       },
-      startDate = new Date();
+      startDate: new Date()
     };
-    postAmbit(ambit);
+    //Utils.postAmbit(ambit, console.log);
+    console.log(JSON.stringify(ambit));
   }
 
   handleChange(event){
@@ -36,13 +37,11 @@ export default class CheckinContainer extends React.Component {
     return(
       <div>
         <h1>Create a new Ambit</h1>
-        <form onSubmit={this.handleCreateAmbit}>
           <input type='text' value={this.state.name} onChange={this.handleChange}/>
           <p>fake coords</p>
           <p>monday, wednesday and friday</p>
           <p>starts today!!!!!!!!!!!!!!!</p>
-          <input type='submit' value='Submit'/>
-        </form>
+          <button onClick={this.handleCreateAmbit}> create </button>
       </div>
     )
   }
