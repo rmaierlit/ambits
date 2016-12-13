@@ -7,11 +7,21 @@ export default class displayAmbit extends React.Component {
     super(props);
     this.state  = {
       today: new Date(),
+      offset: 0,
 
       //hardcoded data for mock-up purposes
       ambit: {weekdays: [true,true,false,true,false,true,true]}, //mon, wed, fri, sat, sun
-      log: {"Sat Dec 10 2016": true, "Mon Dec 12 2016": true} 
+      log: {"Sat Dec 10 2016": true, "Mon Dec 12 2016": true}
     }
+  }
+
+  componentWillMount() {
+    this.setState({startDate: new Date( this.state.today.toDateString() )});
+  }
+
+  modifyStart(change) {
+    var changedOffset = this.state.offset + change;
+    this.setState({offSet: changedOffset});
   }
 
   dateInLog(date){
@@ -23,8 +33,8 @@ export default class displayAmbit extends React.Component {
   }
 
   render() {
-    var startDate = new Date(this.state.today.toDateString());
-    startDate.setDate(startDate.getDate() - 3);
+    var startDate = this.state.startDate;
+    startDate.setDate(startDate.getDate() + this.state.modifier);
     var dates = [];
     for (var i = 0; i < 7; i++){
       var itemInfo = {};
@@ -62,9 +72,13 @@ export default class displayAmbit extends React.Component {
     });
 
     return(
-      <List>
-        {listItems}
-      </List>
+      <div>
+        <button onClick={this.modifyStart(-7)}>prev week</button>
+        <button onClick={this.modifyStart(7)}>next week</button>
+        <List>
+          {listItems}
+        </List>
+      </div>
     );
   }
 }
